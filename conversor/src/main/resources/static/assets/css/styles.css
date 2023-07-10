@@ -1,0 +1,8 @@
+span.CNY::before {
+    content: '\1F1E8\1F1F3'; /* Código Unicode para o emoji de bandeira da China */
+    margin-right: 5px; /* Espaçamento entre o emoji e o texto */
+}
+
+body {
+    background-color: #a0f1f1;
+}
