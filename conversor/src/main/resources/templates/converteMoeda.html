@@ -42,12 +42,12 @@
 
         <div>
             Converter de: <span th:text="${moedaConversor.getMoedaOrigem()}" th:class="${moedaConversor.getMoedaOrigem()}"></span><br>
-            Valor a converter: <span th:text="${#numbers.formatDecimal(moedaConversor.getValor(), 1, 2)}"></span>
+            Valor a converter: <span th:text="${moedaConversor.getValorFormadato()}"></span>
         </div>
 
         <div>
             Para: <span th:text="${moedaConversor.getMoedaDestino()}" th:class="${moedaConversor.getMoedaDestino()}"></span><br>
-            Valor da conversão: <span th:text="${#numbers.formatDecimal(moedaConversor.getValorConvertido(), 1, 2)}"></span>
+            Valor da conversão: <span th:text="${moedaConversor.getValorConvertidoFormadato()}"></span>
         </div>
 
     </section>

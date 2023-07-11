@@ -13,7 +13,8 @@ public class MoedaConversor {
     private BigDecimal valor;
     private BigDecimal valorConvertido;
     private moedas moedas;
-
+    private String valorFormadato;
+    private String valorConvertidoFormadato;
     public enum moedas {
         PESO_ARGENTINO("ARS"),
         REAL("BRL"),
