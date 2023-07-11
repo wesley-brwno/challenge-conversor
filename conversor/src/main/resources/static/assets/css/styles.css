@@ -1,5 +1,37 @@
 body {
-    background-color: #a0f1f1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#conversor-moeda {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.conversor-container,
+.exibe-resultado {
+    width: 80%;
+    margin: 0 auto;
 }
 
 .valor-input {
@@ -15,15 +47,42 @@ body {
 }
 
 .conversor-container fieldset {
-    width: 80%;
     margin: 10px auto;
-    border-radius: 50px 0;
+    border-radius: 50px 50px 0 0;
     border: blue solid 2px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.550);
     padding: 20px;
     background-color: #F7F7F7;
     text-align: center;
 }
+
+.vlr-container,
+.moeda-origem-container,
+.moeda-destino-container {
+    display: inline-block;
+    text-align: left;
+    margin: 5px auto;
+}
+
+.vlr-container { width: 200px}
+.moeda-origem-container { width: 308px}
+.moeda-destino-container { width: 250px}
+
+@media screen and (max-width: 650px) {
+    .vlr-container,
+    .moeda-origem-container,
+    .moeda-destino-container,
+    .btn-submit-container {
+        min-width: 308px;
+        text-align: right;
+    }
+
+    .valor-input {
+        width: 180px;
+        margin: 0 15px;
+    }
+}
+
 
 .ARS::after { content: " 🇦🇷"}
 .BRL::after { content: " 🇧🇷"}
@@ -37,9 +96,8 @@ body {
 .UYU::after { content: " 🇺🇾"}
 
 .exibe-resultado {
-    width: 80%;
     margin: 10px auto;
-    border-radius: 0 50px;
+    border-radius: 0 0 50px 50px;
     border: blue solid 2px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.550);
     padding: 20px;
@@ -54,3 +112,10 @@ body {
     padding: 15px;
     margin: 10px 10px;
 }
+
+footer {
+    color: yellow;
+    margin-top: auto;
+    border: blue solid 2px;
+}
+

@@ -65,9 +65,9 @@ public class MoedaConversorService {
                 numberFormat.setCurrency(Currency.getInstance("JPY"));
                 moedaFormatada = numberFormat.format(valor);
                 break;
-            case "WON":
+            case "KRW":
                 numberFormat = NumberFormat.getCurrencyInstance(new Locale("ko", "KR"));
-                numberFormat.setCurrency(Currency.getInstance("WON"));
+                numberFormat.setCurrency(Currency.getInstance("KRW"));
                 moedaFormatada = numberFormat.format(valor);
                 break;
             case "USD":
