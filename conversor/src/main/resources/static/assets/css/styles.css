@@ -1,8 +1,56 @@
-span.CNY::before {
-    content: '\1F1E8\1F1F3'; /* Código Unicode para o emoji de bandeira da China */
-    margin-right: 5px; /* Espaçamento entre o emoji e o texto */
-}
-
 body {
     background-color: #a0f1f1;
+}
+
+.valor-input {
+    display: inline-block;
+    width: 120px;
+    margin: 0 15px;
+}
+
+.moeda-input {
+    display: inline-block;
+    width: 180px;
+    margin: 0 15px;
+}
+
+.conversor-container fieldset {
+    width: 80%;
+    margin: 10px auto;
+    border-radius: 50px 0;
+    border: blue solid 2px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.550);
+    padding: 20px;
+    background-color: #F7F7F7;
+    text-align: center;
+}
+
+.ARS::after { content: " 🇦🇷"}
+.BRL::after { content: " 🇧🇷"}
+.CLP::after { content: " 🇨🇱"}
+.CNY::after { content: " 🇨🇳"}
+.EUR::after { content: " 🇪🇺"}
+.GBP::after { content: " 🇬🇧"}
+.JPY::after { content: " 🇯🇵"}
+.KRW::after { content: " 🇰🇷"}
+.USD::after { content: " 🇺🇸"}
+.UYU::after { content: " 🇺🇾"}
+
+.exibe-resultado {
+    width: 80%;
+    margin: 10px auto;
+    border-radius: 0 50px;
+    border: blue solid 2px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.550);
+    padding: 20px;
+    background-color: #F7F7F7;
+    text-align: center;
+}
+
+.exibe-resultado div {
+    display: inline-block;
+    box-shadow: inset -2px -2px 3px rgba(0, 0, 0, 0.350), 2px 2px 3px rgba(0, 0, 0, 0.350);
+    width: 300px;
+    padding: 15px;
+    margin: 10px 10px;
 }

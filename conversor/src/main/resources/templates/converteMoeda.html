@@ -1,41 +1,61 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="/assets/css/styles.css">
     <title>Exchange Rate</title>
 </head>
 <body>
-    <form th:action="@{/moedas/converter}" th:object="${moedaConversor}" method="post">
+<main class="conversor-moeda">
+    <section class="conversor-container">
+        <form th:action="@{/moedas/converter}" th:object="${moedaConversor}" method="post">
+            <fieldset>
 
-        <fieldset style="width: 50%; margin: auto; padding: 15px">
+                <label class="form-label" for="typeNumber">Valor</label>
+                <input th:field="*{valor}" type="number" id="typeNumber" class="form-control valor-input"/>
 
-
-            <div class="form-outline">
-                <select th:field="*{moedaOrigem}" class="form-select" aria-label="Default select example">
+                <label class="form-lable" for="moeda-origem">Converter de</label>
+                <select th:field="*{moedaOrigem}" id="moeda-origem" class="form-select moeda-input"
+                        aria-label="Default select example">
                     <option value="" selected>Moeda de origem</option>
-                    <option th:each="moeda : ${moedas}" th:text="${#strings.replace(moeda.name(), '_', ' ')}" th:value="${moeda.getMoeda()}"></option>
+                    <option th:each="moeda : ${moedas}" th:text="${#strings.replace(moeda.name(), '_', ' ')}"
+                            th:value="${moeda.getMoeda()}"></option>
                 </select>
-            </div>
 
-            <div class="form-outline">
-                <select th:field="*{moedaDestino}" class="form-select" aria-label="Default select example">
-                    <option value="" selected>Moeda de origem</option>
-                    <option th:each="moeda : ${moedas}" th:text="${#strings.replace(moeda.name(), '_', ' ')}" th:value="${moeda.getMoeda()}" th:class="${moeda.name()}"></option>
+                <label class="form-lable" for="moeda-destino">para</label>
+                <select th:field="*{moedaDestino}" id="moeda-destino" class="form-select moeda-input"
+                        aria-label="Default select example">
+                    <option value="" selected>Moeda de destino</option>
+                    <option th:each="moeda : ${moedas}" th:text="${#strings.replace(moeda.name(), '_', ' ')}"
+                            th:value="${moeda.getMoeda()}" th:class="${moeda.name()}"></option>
                 </select>
-            </div>
 
-            <div class="form-outline">
-                <label class="form-label" for="typeNumber">Number input</label>
-                <input th:field="*{valor}" type="number" id="typeNumber" class="form-control" />
-            </div>
-            <button type="submit" class="btn btn-outline-dark">Enviar</button>
-        </fieldset>
-    </form>
+                <button type="submit" class="btn btn-outline-dark">Converter</button>
 
-    <div>Valor moeda origem: <span th:text="${moedaConversor.valor}"></span></div>
-    <div>Valor destino origem: <span th:text="${moedaConversor.valorConvertido}"></span></div>
+            </fieldset>
+        </form>
+    </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <section class="exibe-resultado">
+        <h2>Resultado da conversão</h2>
+
+        <div>
+            Converter de: <span th:text="${moedaConversor.getMoedaOrigem()}" th:class="${moedaConversor.getMoedaOrigem()}"></span><br>
+            Valor a converter: <span th:text="${#numbers.formatDecimal(moedaConversor.getValor(), 1, 2)}"></span>
+        </div>
+
+        <div>
+            Para: <span th:text="${moedaConversor.getMoedaDestino()}" th:class="${moedaConversor.getMoedaDestino()}"></span><br>
+            Valor da conversão: <span th:text="${#numbers.formatDecimal(moedaConversor.getValorConvertido(), 1, 2)}"></span>
+        </div>
+
+    </section>
+</main>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
 </body>
 </html>
