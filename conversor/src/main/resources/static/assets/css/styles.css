@@ -86,6 +86,16 @@ main {
         width: 180px;
         margin: 0 15px;
     }
+
+    .unidade-temp-container {
+        min-width: 308px;
+        text-align: end;
+        margin: 5px auto;
+    }
+
+    .unidade-temp-container, select {
+        width: 293px;
+    }
 }
 
 
@@ -122,4 +132,46 @@ footer {
     color: yellow;
     margin-top: auto;
 }
+
+/* estilos de converteTemperatura */
+
+.conversor-temperatura .vlr-container {
+    width: auto;
+    min-width: 260px;
+}
+
+.unidade-temp-container {
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.unidade-temp-container .form-label {
+    display: inline-block;
+    margin-right: 5px;
+}
+.unidade-temp-container .form-select {
+    display: inline-block;
+}
+
+#temp-origem, #temp-destino {
+    width: auto;
+}
+
+option {
+    text-align: center;
+}
+
+.error {
+    text-align: center;
+    padding: 5px;
+    background-color: rgba(245, 71, 71, 0.38);
+    border: red solid 2px;
+    border-radius: 50px;
+    font-weight: bolder;
+    display: inline-block;
+    margin: 2px auto;
+}
+
+
 

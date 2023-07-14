@@ -19,7 +19,7 @@ public class TemperaturaConversor {
             this.unidadeMedia = unidadeMedida;
         }
 
-        public String getUnidadeMedia() {
+        public String getUnidadeMedida() {
             return unidadeMedia;
         }
     }

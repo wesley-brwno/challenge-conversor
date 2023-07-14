@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" href="/assets/css/normalize.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" th:href="@{/assets/css/styles.css}">
@@ -13,26 +14,52 @@
 <main class="conversor-temperatura">
     <section class="conversor-container">
         <form th:action="@{/temperaturas/converter}" th:object="${temperaturaConversor}" method="post">
-            <input th:field="*{valorEntrada}" type="number" class="form-control valor-input"/>
+            <fieldset>
+                <div class="vlr-container">
+                    <label class="form-label" for="temperatura">Temperatura</label>
+                    <input th:field="*{valorEntrada}" type="number" step="0.01" id="temperatura" class="form-control valor-input"/>
+                </div>
 
-            <select th:field="*{temperaturaBase}">
-                <option value="" selected>Unidade origem</option>
-                <option th:each="temperatura : ${temperaturas}" th:value="${temperatura}" th:text="${temperatura.getUnidadeMedia()}"></option>
-            </select>
+                <div class="unidade-temp-container">
+                    <label class="form-label">Converter de</label>
+                    <select th:field="*{temperaturaBase}" id="temp-origem" class="form-select">
+                        <option value="" selected>Unidade de origem</option>
+                        <option th:each="temperatura : ${temperaturas}" th:value="${temperatura}" th:text="${temperatura.getUnidadeMedida()}" th:selected="${temperatura.equals(temperaturaConversor.getTemperaturaBase())}"></option>
+                    </select>
+                </div>
 
-            <select th:field="*{temperaturaDestino}">
-                <option value="" selected>Unidade destino</option>
-                <option th:each="temperatura : ${temperaturas}" th:value="${temperatura}" th:text="${temperatura.getUnidadeMedia()}"></option>
-            </select>
-            <div class="btn-submit-container">
-                <button type="submit" class="btn btn-outline-dark">Converter</button>
-            </div>
+                <div class="unidade-temp-container">
+                    <label class="form-label" for="temp-destino">para</label>
+                    <select th:field="*{temperaturaDestino}" id="temp-destino" class="form-select">
+                        <option value="" selected>Unidade de destino</option>
+                        <option th:each="temperatura : ${temperaturas}" th:value="${temperatura}" th:text="${temperatura.getUnidadeMedida()}" th:selected="${temperatura.equals(temperaturaConversor.getTemperaturaDestino())}"></option>
+                    </select>
+                </div>
+
+                <div class="btn-submit-container">
+                    <button type="submit" class="btn btn-outline-dark">Converter</button>
+                </div> <br>
+
+                <span th:if="${error}" th:text="${error}" class="error"></span>
+            </fieldset>
         </form>
-
     </section>
 
     <section class="exibe-resultado">
-        <span th:text="${temperaturaConversor.getValorSaida()}"></span>
+
+        <div>
+            Temperatura a conveter <br>
+            <span th:text="${temperaturaConversor.getValorEntrada()}"></span>
+            <span th:text="${temperaturaConversor.temperaturaBase != null} ? ${temperaturaConversor.getTemperaturaBase().getUnidadeMedida()} : ''"></span>
+        </div>
+
+        <div>
+            Temperatura convertida <br>
+            <span th:text="${temperaturaConversor.getValorSaida()}"></span>
+            <span th:text="${temperaturaConversor.getTemperaturaDestino() != null} ? ${temperaturaConversor.getTemperaturaDestino().getUnidadeMedida()} : ''"></span>
+
+        </div>
+
     </section>
 </main>
 <footer>

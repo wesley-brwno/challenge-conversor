@@ -2,7 +2,7 @@ package com.one.conversor.controller;
 
 import com.one.conversor.model.TemperaturaConversor;
 import com.one.conversor.service.TemperaturaConversorService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.one.conversor.util.FormataNumerosUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,11 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/temperaturas")
 public class ConverteTemperaturaController {
     private TemperaturaConversor temperaturaConversor;
-    @Autowired
-    private TemperaturaConversorService temperaturaConversorService;
+    private final TemperaturaConversorService temperaturaConversorService;
+    private final FormataNumerosUtil formataNumerosUtil;
+    private String error;
 
-    public ConverteTemperaturaController(TemperaturaConversorService temperaturaConversorService) {
+    public ConverteTemperaturaController(TemperaturaConversorService temperaturaConversorService, FormataNumerosUtil formataNumerosUtil) {
         this.temperaturaConversorService = temperaturaConversorService;
+        this.formataNumerosUtil = formataNumerosUtil;
     }
 
     @GetMapping("/form")
@@ -29,15 +31,27 @@ public class ConverteTemperaturaController {
 
         model.addAttribute("temperaturaConversor", temperaturaConversor);
         model.addAttribute("temperaturas", TemperaturaConversor.Temperatura.values());
+        model.addAttribute("error", error);
+        error = null;
         return "converteTemperatura";
     }
 
     @PostMapping("/converter")
     public String converterTemperaturas(@ModelAttribute TemperaturaConversor temperaturaConversor) {
-        System.out.println(temperaturaConversor.toString());
+        if (temperaturaConversor.getTemperaturaBase() == null || temperaturaConversor.getTemperaturaDestino() == null) {
+            error = "Por favor, selecione as unidades de origem e destino!";
+            return "redirect:/temperaturas/form";
+        }
 
-        this.temperaturaConversor.setValorSaida(temperaturaConversorService.converteTemperatura(temperaturaConversor));
-        System.out.println("teste conversor de temperaturas");
+        if (!temperaturaConversor.getTemperaturaBase().equals(temperaturaConversor.getTemperaturaDestino())) {
+            Double temperaturaFormatada = formataNumerosUtil.formataSaida(temperaturaConversorService.converteTemperatura(temperaturaConversor));
+            temperaturaConversor.setValorSaida(temperaturaFormatada);
+        } else {
+            temperaturaConversor.setValorSaida(temperaturaConversor.getValorEntrada());
+        }
+
+        this.temperaturaConversor = temperaturaConversor;
+
         return "redirect:/temperaturas/form";
     }
 }
