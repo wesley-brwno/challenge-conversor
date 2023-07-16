@@ -9,8 +9,6 @@ public class TemperaturaConversorService {
     public Double converteTemperatura(TemperaturaConversor temperaturaConversor) {
         Double valorConvetido = null;
 
-        System.out.println("Teste em temperatura service");
-
         if (temperaturaConversor.getTemperaturaBase().equals(TemperaturaConversor.Temperatura.CELSIUS)) {
             switch (temperaturaConversor.getTemperaturaDestino()) {
                 case FAHRENHEIT:
@@ -31,10 +29,7 @@ public class TemperaturaConversorService {
                 case KELVIN:
                     valorConvetido = fahrenheitParaKelvin(temperaturaConversor.getValorEntrada());
                     break;
-                default:
-                    System.out.println("Não encotrado");
             }
-            System.out.println(valorConvetido + "em metodo de conversao");
         }
 
         if (temperaturaConversor.getTemperaturaBase().equals(TemperaturaConversor.Temperatura.KELVIN)) {

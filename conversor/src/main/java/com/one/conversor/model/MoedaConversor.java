@@ -1,6 +1,7 @@
 package com.one.conversor.model;
 
 import lombok.Data;
+import lombok.NonNull;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;

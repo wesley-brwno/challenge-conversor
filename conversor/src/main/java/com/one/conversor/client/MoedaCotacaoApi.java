@@ -1,14 +1,14 @@
-package com.one.conversor.service;
+package com.one.conversor.client;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.one.conversor.model.MoedaCotacao;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-@Service
-public class MoedaCotacaoService {
-    public MoedaCotacao obterCotacao(String api_url, String moedaPar) {
+@Component
+public class MoedaCotacaoApi {
+    public MoedaCotacao obtemCotacao(String api_url, String moedaPar) {
         RestTemplate restTemplate = new RestTemplate();
         String jsonResponse = restTemplate.getForObject(api_url, String.class);
 

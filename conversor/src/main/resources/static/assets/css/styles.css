@@ -85,6 +85,7 @@ main {
     .valor-input {
         width: 180px;
         margin: 0 15px;
+        text-align: center;
     }
 
     .unidade-temp-container {
@@ -167,10 +168,15 @@ option {
     padding: 5px;
     background-color: rgba(245, 71, 71, 0.38);
     border: red solid 2px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.550);
     border-radius: 50px;
     font-weight: bolder;
     display: inline-block;
     margin: 2px auto;
+}
+
+.navbar-nav.ml-auto {
+    margin-left: auto;
 }
 
 

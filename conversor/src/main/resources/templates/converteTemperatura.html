@@ -15,9 +15,11 @@
     <section class="conversor-container">
         <form th:action="@{/temperaturas/converter}" th:object="${temperaturaConversor}" method="post">
             <fieldset>
+                <h2>Conversor de temperaturas</h2>
+
                 <div class="vlr-container">
                     <label class="form-label" for="temperatura">Temperatura</label>
-                    <input th:field="*{valorEntrada}" type="number" step="0.01" id="temperatura" class="form-control valor-input"/>
+                    <input th:field="*{valorEntrada}" type="number" step="0.01" th:value="${valorEntrada == null} ? 0 : valorEntrada" id="temperatura" class="form-control valor-input" />
                 </div>
 
                 <div class="unidade-temp-container">
@@ -40,13 +42,16 @@
                     <button type="submit" class="btn btn-outline-dark">Converter</button>
                 </div> <br>
 
-                <span th:if="${error}" th:text="${error}" class="error"></span>
+                <div th:each="error : ${errors}">
+                    <span th:if="${error}" th:text="${error}" class="error"></span>
+                </div>
+
             </fieldset>
         </form>
     </section>
 
     <section class="exibe-resultado">
-
+        <h2>Resultado da conversão</h2>
         <div>
             Temperatura a conveter <br>
             <span th:text="${temperaturaConversor.getValorEntrada()}"></span>
