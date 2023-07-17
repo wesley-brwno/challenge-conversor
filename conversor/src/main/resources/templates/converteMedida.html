@@ -7,34 +7,34 @@
     <link rel="stylesheet" th:href="@{/assets/css/styles.css}">
     <title>Multi Conversor</title>
 </head>
-<body id="conversor-temperatura">
+<body id="conversor-medida">
 <header>
     <div th:replace="~{/fragments/fragmentos :: header}"></div>
 </header>
 <main class="conversor-temperatura">
     <section class="conversor-container">
-        <form th:action="@{/temperaturas/converter}" th:object="${temperaturaConversor}" method="post">
+        <form th:action="@{/medidas/converter}" th:object="${medidaConversor}" method="post">
             <fieldset>
-                <h2>Conversor de temperaturas</h2>
+                <h2>Conversor de medidas</h2>
 
                 <div class="vlr-container">
-                    <label class="form-label" for="temperatura">Temperatura</label>
-                    <input th:field="*{valorEntrada}" type="number" step="0.01" th:value="${valorEntrada == null} ? 0 : valorEntrada" id="temperatura" class="form-control valor-input" />
+                    <label class="form-label" for="medida">Medida</label>
+                    <input th:field="*{valorEntrada}" type="number" step="0.01" th:value="${valorEntrada == null} ? 0 : valorEntrada" id="medida" class="form-control valor-input" />
                 </div>
 
                 <div class="input-container">
                     <label class="form-label">Converter de</label>
-                    <select th:field="*{temperaturaBase}" id="input-origem" class="form-select">
-                        <option value="" selected>Unidade de origem</option>
-                        <option th:each="temperatura : ${temperaturas}" th:value="${temperatura}" th:text="${temperatura.getUnidadeMedida()}" th:selected="${temperatura.equals(temperaturaConversor.getTemperaturaBase())}"></option>
+                    <select th:field="*{medidaOrigem}" id="input-origem" class="form-select">
+                        <option value="" selected>Medida de origem</option>
+                        <option th:each="medida : ${medidas}" th:value="${medida}" th:text="${medida.getDescricao()}" th:selected="${medida.equals(medidaConversor.getValorEntrada())}"></option>
                     </select>
                 </div>
 
                 <div class="input-container">
                     <label class="form-label" for="input-destino">para</label>
-                    <select th:field="*{temperaturaDestino}" id="input-destino" class="form-select">
-                        <option value="" selected>Unidade de destino</option>
-                        <option th:each="temperatura : ${temperaturas}" th:value="${temperatura}" th:text="${temperatura.getUnidadeMedida()}" th:selected="${temperatura.equals(temperaturaConversor.getTemperaturaDestino())}"></option>
+                    <select th:field="*{medidaDestino}" id="input-destino" class="form-select">
+                        <option value="" selected>Medida de destino</option>
+                        <option th:each="medida : ${medidas}" th:value="${medida}" th:text="${medida.getDescricao()}" th:selected="${medida.equals(medidaConversor.getMedidaDestino())}"></option>
                     </select>
                 </div>
 
@@ -53,15 +53,15 @@
     <section class="exibe-resultado">
         <h2>Resultado da conversão</h2>
         <div>
-            Temperatura a conveter <br>
-            <span th:text="${temperaturaConversor.getValorEntrada()}"></span>
-            <span th:text="${temperaturaConversor.temperaturaBase != null} ? ${temperaturaConversor.getTemperaturaBase().getUnidadeMedida()} : ''"></span>
+            Medida a conveter <br>
+            <span th:text="${medidaConversor.getValorEntrada()}"></span>
+            <span th:text="${medidaConversor.getMedidaOrigem() != null} ? ${medidaConversor.getMedidaOrigem()} : ''"></span>
         </div>
 
         <div>
-            Temperatura convertida <br>
-            <span th:text="${temperaturaConversor.getValorSaida()}"></span>
-            <span th:text="${temperaturaConversor.getTemperaturaDestino() != null} ? ${temperaturaConversor.getTemperaturaDestino().getUnidadeMedida()} : ''"></span>
+            Medida convertida <br>
+            <span th:text="${medidaConversor.getValorSaida()}"></span>
+            <span th:text="${medidaConversor.getMedidaDestino() != null} ? ${medidaConversor.getMedidaDestino()} : ''"></span>
 
         </div>
 

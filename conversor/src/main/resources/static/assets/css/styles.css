@@ -18,6 +18,13 @@ body, html {
 body {
     display: flex;
     flex-direction: column;
+    background-color: #D0D4D8;
+}
+
+.header-logo {
+    height: 40px;
+    width: auto;
+    margin-left: 20px;
 }
 
 main {
@@ -88,13 +95,13 @@ main {
         text-align: center;
     }
 
-    .unidade-temp-container {
+    .input-container {
         min-width: 308px;
         text-align: end;
         margin: 5px auto;
     }
 
-    .unidade-temp-container, select {
+    .input-container, select {
         width: 293px;
     }
 }
@@ -141,21 +148,21 @@ footer {
     min-width: 260px;
 }
 
-.unidade-temp-container {
+.input-container {
     display: inline-block;
     margin-right: 10px;
     vertical-align: middle;
 }
 
-.unidade-temp-container .form-label {
+.input-container .form-label {
     display: inline-block;
     margin-right: 5px;
 }
-.unidade-temp-container .form-select {
+.input-container .form-select {
     display: inline-block;
 }
 
-#temp-origem, #temp-destino {
+#input-origem, #input-destino {
     width: auto;
 }
 
