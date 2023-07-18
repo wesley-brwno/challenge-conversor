@@ -1,4 +1,3 @@
-
 <h1 align="center">Multiconversor</h1>
 
 <p align="center">
@@ -39,3 +38,10 @@ O programa oferece suporte para a conversão de uma ampla variedade de moedas, u
 - Thymeleaf
 - Lombok
 - Jackson Databind
+
+<h2 align="center">Badge do Alura</h2>
+
+<p align="center">
+  <img src="https://i.pinimg.com/564x/00/c8/23/00c823c81bbb4d859b1d9f1b2d2070dc.jpg" style="display: block; margin: 0 auto;">
+</p>
+
