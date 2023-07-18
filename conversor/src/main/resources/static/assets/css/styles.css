@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 body {
     display: flex;
     flex-direction: column;
@@ -24,7 +25,7 @@ body {
 .header-logo {
     height: 40px;
     width: auto;
-    margin-left: 20px;
+    margin-right: 20px;
 }
 
 main {
@@ -41,10 +42,14 @@ main {
     margin: 0 auto;
 }
 
-.valor-input {
+.valor-input, .valor-input-moeda {
     display: inline-block;
-    width: 120px;
+    width: 170px;
     margin: 0 15px;
+}
+
+.valor-input-moeda {
+    width: 120px;
 }
 
 .moeda-input {
@@ -91,8 +96,16 @@ main {
 
     .valor-input {
         width: 180px;
-        margin: 0 15px;
+        margin: 0 -18px 0 15px;
         text-align: center;
+    }
+
+    .temp-valor-input {
+        margin: 0px -5px 0 15px;
+    }
+
+    .valor-input-moeda {
+        margin: 0 15px;
     }
 
     .input-container {
@@ -185,6 +198,86 @@ option {
 .navbar-nav.ml-auto {
     margin-left: auto;
 }
+
+/* estilos de index */
+#home-page main {
+    display: block;
+    background-color: #E0FAFFFF;
+}
+
+#home-page main div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 70vh; /* Defina a altura total da div */
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#home-page h2 {
+    font-size: 1.4em;
+}
+
+#home-page h3 {
+    font-size: 1.1em;
+}
+.cabecalho {
+    text-align: center;
+    margin: 15px auto 50px;
+}
+.redireciona-pg {
+    display: flex;
+    justify-content: center;
+}
+
+.redireciona-pg figure {
+    display: inline-block;
+    text-align: center;
+    margin: 20px;
+    border: blue solid 2px;
+    border-radius: 0 50px 0 50px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.550), -2px -2px 5px rgba(0, 0, 0, 0.550);
+    background-color: #F7F7F7;
+    padding: 5px;
+    transition: 0.7s all;
+}
+
+.redireciona-pg figure figcaption {
+    padding: 8px;
+}
+
+.redireciona-pg figure img {
+    height: 75px;
+    width: auto;
+}
+
+.redireciona-pg figure:hover {
+    transform: scale(1.1);
+}
+
+.built-with-container {
+    display: flex;
+    justify-content: center;
+    height: 50px;
+}
+
+.built-with-container .exibe-logo {
+    height: 50px;
+    width: auto;
+    margin-right: 10px; /* Opcional: Adiciona margem entre os elementos */
+}
+
+.built-with-container .exibe-logo:last-child {
+    margin-right: 0; /* Remove a margem à direita do último elemento */
+}
+
+/* estilos de error */
+
+#error-page figure {
+    height: 70vh;
+    width: auto;
+}
+
 
 
 

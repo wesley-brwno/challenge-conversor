@@ -1,8 +1,6 @@
 package com.one.conversor.util;
 
-import com.one.conversor.model.MedidaConversor;
 import com.one.conversor.model.MoedaConversor;
-import com.one.conversor.model.TemperaturaConversor;
 import org.springframework.stereotype.Component;
 
 import java.text.DecimalFormat;
@@ -32,4 +30,5 @@ public class Util {
 
         return errors;
     }
+
 }

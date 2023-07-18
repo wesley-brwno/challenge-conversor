@@ -5,7 +5,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" th:href="@{/assets/css/styles.css}">
-    <title>Multi Conversor</title>
+    <link rel="icon" href="/assets/images/convert.svg" type="image/svg+xml">
+    <title>Multiconversor</title>
 </head>
 <body id="conversor-medida">
 <header>
@@ -18,14 +19,15 @@
                 <h2>Conversor de medidas</h2>
 
                 <div class="vlr-container">
-                    <label class="form-label" for="medida">Medida</label>
-                    <input th:field="*{valorEntrada}" type="number" step="0.01" th:value="${valorEntrada == null} ? 0 : valorEntrada" id="medida" class="form-control valor-input" />
+                    <label class="form-label" for="valor-input">Medida</label>
+                    <input th:field="*{valorEntrada}" type="number" step="0.01" th:value="${valorEntrada == null} ? 0 : valorEntrada" id="valor-input"
+                           class="form-control valor-input"/>
                 </div>
 
                 <div class="input-container">
                     <label class="form-label">Converter de</label>
                     <select th:field="*{medidaOrigem}" id="input-origem" class="form-select">
-                        <option value="" selected>Medida de origem</option>
+                        <option value="" selected>medida de origem</option>
                         <option th:each="medida : ${medidas}" th:value="${medida}" th:text="${medida.getDescricao()}" th:selected="${medida.equals(medidaConversor.getValorEntrada())}"></option>
                     </select>
                 </div>
@@ -33,7 +35,7 @@
                 <div class="input-container">
                     <label class="form-label" for="input-destino">para</label>
                     <select th:field="*{medidaDestino}" id="input-destino" class="form-select">
-                        <option value="" selected>Medida de destino</option>
+                        <option value="" selected>medida de destino</option>
                         <option th:each="medida : ${medidas}" th:value="${medida}" th:text="${medida.getDescricao()}" th:selected="${medida.equals(medidaConversor.getMedidaDestino())}"></option>
                     </select>
                 </div>
